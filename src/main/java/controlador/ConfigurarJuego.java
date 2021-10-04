@@ -3,6 +3,7 @@ package controlador;
 
 import java.util.ArrayList;
 
+
 import javax.swing.JOptionPane;
 
 import org.bson.Document;
@@ -17,9 +18,7 @@ import modelo.Preguntas;
 
 public class ConfigurarJuego {
 
-	static Conexion con = new Conexion();
-	static MongoDatabase database = con.conectar(); 
-	static Gson gson = new Gson();
+
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -69,10 +68,14 @@ public class ConfigurarJuego {
 		
 		p.set_id(id);
 		p.setPregunta(pregunta);
-		p.setOpcionesRespuesta(opciones);;
+		p.setOpcionesRespuesta(opciones);
 		p.setRespuestaCorrecta(respuestaCorrecta);
 		p.setCategoria(categoria);
 		return p;
 	}
+	
+	static Conexion con = new Conexion();
+	static MongoDatabase database = con.conectar(); 
+	static Gson gson = new Gson();
 
 }

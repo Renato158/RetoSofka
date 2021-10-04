@@ -19,7 +19,7 @@ public class Jugador {
 	
 	@Override
 	public String toString() {
-		return "Preguntas [_id=" + _id + ", nombre=" + nombre + "]";
+		return "Jugador [_id=" + _id + ", nombre=" + nombre + "]";
 	}
 	
 	private int _id;
