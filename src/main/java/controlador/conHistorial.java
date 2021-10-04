@@ -22,15 +22,14 @@ public class conHistorial {
 	public static Document createDBObject(Historial historial){
 		
 		
-		Document document = new Document("_id", historial.get_id()	).
-		append("idJugador", historial.getIdJugador()).
+		Document document = new Document("idJugador", historial.getIdJugador()).
 		append("premio", historial.getPremio()).
 		append("fecha", historial.getFecha());
 		
 		return document;
 	}
 	
-	public static Historial crearHistorial(int premio, int id, int _id) {
+	public static Historial crearHistorial(int premio, int id) {
 		
 		MongoCollection<Document> jugador = database.getCollection("jugador");
 		
@@ -44,7 +43,6 @@ public class conHistorial {
     	
 		Historial h = new Historial();
 		
-		h.set_id(_id);
 		h.setIdJugador(j.get_id());
 		h.setPremio(premio);
 		h.setFecha(LocalDate.now().toString());

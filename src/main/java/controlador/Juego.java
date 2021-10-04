@@ -37,7 +37,7 @@ public class Juego {
 		
 		int premio = 0;
 		int continuar = 0;
-		int id  = Integer.parseInt((JOptionPane.showInputDialog("Ingrese su id")));
+		int id  = Integer.parseInt((JOptionPane.showInputDialog("Ingrese su numero id")));
 		Jugador jugador = ConJugador.crearJugador(id);
 		Document doc = ConJugador.createDBObject(jugador);
 		
@@ -73,7 +73,7 @@ public class Juego {
             		
             		System.out.print("Terminaste el juego, premio: "+ premio);
             		
-            		Historial historial = conHistorial.crearHistorial(premio, id, ++_id);
+            		Historial historial = conHistorial.crearHistorial(premio, id);
             		Document doc1 = conHistorial.createDBObject(historial);
             		
             		MongoCollection<Document> historialC = database.getCollection("historial");
@@ -110,7 +110,7 @@ public class Juego {
 	            		System.out.print("Terminaste el juego, premio: "+ premio);
 	            		
 	            		
-	            		Historial historial = conHistorial.crearHistorial(premio, id, ++_id);
+	            		Historial historial = conHistorial.crearHistorial(premio, id);
 	            		Document doc1 = conHistorial.createDBObject(historial);
 	            		
 	            		MongoCollection<Document> historialC = database.getCollection("historial");
@@ -145,7 +145,7 @@ public class Juego {
 		            		
 		            		System.out.print("Terminaste el juego, premio: "+ premio);
 		            		
-		            		Historial historial = conHistorial.crearHistorial(premio, id, ++_id);
+		            		Historial historial = conHistorial.crearHistorial(premio, id);
 		            		Document doc1 = conHistorial.createDBObject(historial);
 		            		
 		            		MongoCollection<Document> historialC = database.getCollection("historial");
@@ -180,7 +180,7 @@ public class Juego {
 			            		
 			            		System.out.print("Terminaste el juego, premio: "+ premio);
 			            		
-			            		Historial historial = conHistorial.crearHistorial(premio, id, ++_id);
+			            		Historial historial = conHistorial.crearHistorial(premio, id);
 			            		Document doc1 = conHistorial.createDBObject(historial);
 			            		
 			            		MongoCollection<Document> historialC = database.getCollection("historial");
@@ -207,18 +207,20 @@ public class Juego {
 	                    		premio = 5000;
 	                    		System.out.print("Ganaste el juego, tu premio es de:  "+ premio +" dolares" );
 	                    		
-	    	            		Historial historial = conHistorial.crearHistorial(premio, id, ++_id);
+	    	            		Historial historial = conHistorial.crearHistorial(premio, id);
 	    	            		Document doc1 = conHistorial.createDBObject(historial);
 	    	            		
 	    	            		MongoCollection<Document> historialC = database.getCollection("historial");
 	    	            		historialC.insertOne(doc1);
+	    	            		
+	    	            		break;
 	    	            		
 	                    	}else {
 	                    		premio = 0;
 	                    		
 	                    		System.out.println("Fin del juego, perdiste");
 	                    		
-	    	            		Historial historial = conHistorial.crearHistorial(premio, id, ++_id);
+	    	            		Historial historial = conHistorial.crearHistorial(premio, id);
 	    	            		Document doc1 = conHistorial.createDBObject(historial);
 	    	            		
 	    	            		MongoCollection<Document> historialC = database.getCollection("historial");
@@ -232,7 +234,7 @@ public class Juego {
 	                		premio = 0;
 	                		System.out.println("Fin del juego, perdiste");
 	                		
-		            		Historial historial = conHistorial.crearHistorial(premio, id, ++_id);
+		            		Historial historial = conHistorial.crearHistorial(premio, id);
 		            		Document doc1 = conHistorial.createDBObject(historial);
 		            		
 		            		MongoCollection<Document> historialC = database.getCollection("historial");
@@ -246,7 +248,7 @@ public class Juego {
 	            		premio = 0;
 	            		System.out.println("Fin del juego, perdiste");
 	            		
-	            		Historial historial = conHistorial.crearHistorial(premio, id, ++_id);
+	            		Historial historial = conHistorial.crearHistorial(premio, id);
 	            		Document doc1 = conHistorial.createDBObject(historial);
 	            		
 	            		MongoCollection<Document> historialC = database.getCollection("historial");
@@ -258,7 +260,7 @@ public class Juego {
 	        		premio = 0;
 	        		System.out.println("Fin del juego, perdiste");
 	        		
-            		Historial historial = conHistorial.crearHistorial(premio, id, ++_id);
+            		Historial historial = conHistorial.crearHistorial(premio, id);
             		Document doc1 = conHistorial.createDBObject(historial);
             		
             		MongoCollection<Document> historialC = database.getCollection("historial");
@@ -271,7 +273,7 @@ public class Juego {
 	    		premio = 0;
 	    		System.out.println("Fin del juego, perdiste");
 	    		
-        		Historial historial = conHistorial.crearHistorial(premio, id, ++_id);
+        		Historial historial = conHistorial.crearHistorial(premio, id);
         		Document doc1 = conHistorial.createDBObject(historial);
         		
         		MongoCollection<Document> historialC = database.getCollection("historial");
@@ -327,7 +329,7 @@ public class Juego {
 	public static int numeroAleatorio() {
 		
 		int minimo = 0;
-		int maximo  = 2;
+		int maximo  = 4;
 		
         return ThreadLocalRandom.current().nextInt(minimo, maximo );
 		
@@ -433,6 +435,6 @@ public class Juego {
 	static MongoDatabase database = con.conectar(); 
 	static Gson gson = new Gson();
 	
-	static int _id = 3;
+
 
 }
